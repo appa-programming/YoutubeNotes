@@ -1,13 +1,29 @@
 {
   "manifest_version": 2,
 
-  "name": "One-click Kittens",
-  "description": "This extension demonstrates a browser action with kittens.",
-  "version": "1.0",
+  "name": "Youtube Notes",
+  "description": "This Extension lets you take notes in your favorite youtube videos.",
+  "version": "0.0.1",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "storage",
+    "tabs",
+    "http://*/*"
   ],
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "css": ["extension.css"],
+      "js": ["jquery-2.2.3.min.js", "youtubenotes.js"]
+    }
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
   "browser_action": {
     "default_icon": "img/icon.png",
     "default_popup": "popup.html"
