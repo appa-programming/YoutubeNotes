@@ -1,13 +1,12 @@
-﻿chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        console.log(sender.tab ?
-                    "from a content script:" + sender.tab.url :
-                    "from the extension");
-        if (request.greeting == "hello")
-            sendResponse({ farewell: "goodbye" });
-    }
-);
+﻿console.log("loading...");
 
-chrome.runtime.onConnect.addListener(function (port) {
+/*chrome.runtime.onConnect.addListener(function (port) {
+    console.log("hmmm");
+    port.onMessage.addListener(function (msg) {
+        if (msg.greeting == "hello")
+            port.postMessage({ greeting: "Who's there?" });
+        else if (msg.greeting == "test")
+            port.postMessage({ greeting: "test" });
+    });
     port.postMessage({ greeting: "hello" });
-});
+});*/
